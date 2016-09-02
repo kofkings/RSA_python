@@ -20,7 +20,8 @@ def RSA(plainText):
         privateKey = bezout(publicKey, totientN)
         while privateKey < 0:
             privateKey += totientN
-
+    privateKey = privateKey
+    
 #Encrypt CipherTextNumber = PlainTextNumber ^ PublicKey % N
     #Devide to many block | plainTextNumber < N
     blockSize = n.bit_length() / 8
@@ -33,7 +34,7 @@ def RSA(plainText):
     print "Plain Text Number : ", arrayPlainTextNumber
 
     arrayCipherTextNumber = []
-    #Encrypt and display on TextBox
+    
     for i in arrayPlainTextNumber:
         arrayCipherTextNumber.append(pow(i,publicKey,n))
     print "Cipher Text Number : ", arrayCipherTextNumber
@@ -42,7 +43,6 @@ def RSA(plainText):
 
     decryptedText = ''
     arrayDecryptedTextNumber = []
-    #Decrypt and Display on TextBox
     for i in arrayCipherTextNumber:
         decryptedNumber = pow(i, privateKey, n)
         arrayDecryptedTextNumber.append(decryptedNumber)
@@ -138,6 +138,6 @@ def numToText(number):
 if __name__ == '__main__':
     message = raw_input("Type a message to test:")
     RSA(message)
-    input("Press a key to exit")
+    raw_input("Press a key to exit")
 
 #Sorry about my English
